@@ -2,22 +2,19 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome</title>
-    <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
-        .container { text-align: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-center vh-100">
 
-    <div class="container">
-        <h3>Welcome, {{ Auth::user()->name }}!</h3>
-        <p>Login Successful</p>
-
+    <div class="card p-4 shadow" style="width: 350px;">
+        <h3 class="text-center">Welcome!</h3>
+        <p class="text-center">Login Successful</p>
         <form action="/logout" method="POST">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit" class="btn btn-danger w-100">Logout</button>
+        {{-- logout user dan redirect balik ke halaman login --}}
         </form>
     </div>
 

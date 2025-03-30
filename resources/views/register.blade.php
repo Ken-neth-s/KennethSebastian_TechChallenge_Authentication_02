@@ -2,32 +2,39 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
-    <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
-        .container { text-align: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; width: 300px; }
-        .message { color: red; font-size: 14px; margin-bottom: 10px; }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex justify-content-center align-items-center vh-100">
 
-    <div class="container">
-        <h3>Register</h3>
+    <div class="card p-4 shadow" style="width: 350px;">
+        <h3 class="text-center">Register</h3>
 
         @if($errors->any())
-            <p class="message">{{ $errors->first() }}</p>
+            <div class="alert alert-danger">{{ $errors->first() }}</div>
         @endif
 
         <form action="/register" method="POST">
             @csrf
-            <input type="text" name="name" placeholder="Nama" required><br><br>
-            <input type="email" name="email" placeholder="Email" required><br><br>
-            <input type="password" name="password" placeholder="Password" required><br><br>
-            <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required><br><br>
-            <button type="submit">Register</button>
+            <div class="mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Nama" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Konfirmasi Password" required>
+            </div>
+            {{-- input data user --}}
+            <button type="submit" class="btn btn-primary w-100">Daftar</button>
+            {{-- submit data user ke database dan akan dipindah ke halaman login --}}
         </form>
-        <p><a href="/login">Login</a></p>
+        <p class="mt-3 text-center"><a href="/login">Already have an account?</a></p>
+        {{-- redirect user ke halaman login --}}
     </div>
 
 </body>
