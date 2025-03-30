@@ -4,31 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
+        .container { text-align: center; padding: 20px; border: 1px solid #ccc; border-radius: 8px; width: 300px; }
+        .message { color: red; font-size: 14px; margin-bottom: 10px; }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
 
-    @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
-    @endif
+    <div class="container">
+        <h3>Login</h3>
 
-    @if($errors->any())
-        <p style="color: red;">{{ $errors->first() }}</p>
-    @endif
+        @if(session('success'))
+            <p class="message" style="color: green;">{{ session('success') }}</p>
+        @endif
 
-    <form action="/login" method="POST">
-        @csrf
-        <label>Email:</label>
-        <input type="email" name="email" required><br>
-        {{-- input email yang sudah ter registrasi --}}
+        @if($errors->has('error'))
+            <p class="message">{{ $errors->first('error') }}</p>
+        @endif
 
-        <label>Password:</label>
-        <input type="password" name="password" required><br>
-        {{-- input password untuk email yang sudah diregister --}}
+        <form action="/login" method="POST">
+            @csrf
+            <input type="email" name="email" placeholder="Email" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="/register">Register</a></p>
+    </div>
 
-        <button type="submit">Login</button>
-    </form>
-
-    <p>Dont have an account?<a href="/register">Register now</a></p>
 </body>
 </html>

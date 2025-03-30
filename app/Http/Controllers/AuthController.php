@@ -59,7 +59,7 @@ class AuthController extends Controller
             // jika login sukses maka user akan diredirect ke halaman home
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah']);
+        return back()->withErrors(['error' => 'Email atau password salah']);
         // jika pada baris 55 gagal maka user balik ke halaman login dengan kalimat bahwa email atau passswordnya salah di display
     }
 
